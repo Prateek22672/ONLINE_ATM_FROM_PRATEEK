@@ -3,12 +3,12 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
-//#include <stdio.h>
 #include <string.h>
 
 void showbalance(double balance);
 double deposit();
 double withdraw(double balance);
+int changepin(int pin);
 char help3();
 char help4();
 
@@ -16,7 +16,7 @@ int main()
 {
     int balance = 0;
     int choice = 0;
-    int pin,pin2;
+    int pin,no;
     char str[25],str1[25];
     int help2[10];
     std::string help;
@@ -27,6 +27,9 @@ int main()
     std::cout << "                       \n";
     std::cout << "PRATEEK'S HEAD OFFICE\nTOLL_NO - 9922001128\n";
     std::cout << "                       \n";
+    std::cout << "ENTER YOUR ACCOUNT NUMBER:";
+    std::cin >> no;
+    if(sizeof(no) >= 4)
     std::cout << "ENTER YOUR ATM PIN:";
     std::cin >> pin;
     std::cout << "\n  \nDEAR CUSTOMER WELCOME TO PRATEEK'S ONLINE ATM\n \n";
@@ -56,11 +59,25 @@ int main()
                     showbalance(balance);
             break;
             case 4: help3();
-                    //help4();
                     break;
+
+            case 5: changepin(pin);
+            break;        
                 
-                case 5:
-                std::cout << "\nPLEASE ENTER YOUR OLD PIN TO COUNTINUE:";
+            case 6: std::cout << "THANK_YOU_FOR_VISITING_PRATEEK'S_E-ATM\nCEO & MD - PRATEEK KORATALA\nHEAD QUARTERS-USA,CALIFORNIA-53013";
+            break;
+            default: std::cout << "SORRY_502_BAD_GATEWAY_PLEASE_TRY_AGAIN_\n";
+            break;
+        }
+    }while(choice != 6);
+    
+    return 0;
+}
+int changepin(int pin)
+{
+    int pin2;
+    char str[25],str1[25];
+    std::cout << "\nPLEASE ENTER YOUR OLD PIN TO COUNTINUE:";
                 std::cin >> pin2;
     if(pin2==pin)
     {
@@ -81,15 +98,6 @@ int main()
     {
         std::cout << "INCORRECT PIN\nTRY AGAIN\n";
     }
-    break;
-            case 6: std::cout << "THANK_YOU_FOR_VISITING_PRATEEK'S_E-ATM\nCEO & MD - PRATEEK KORATALA\nHEAD QUARTERS-USA,CALIFORNIA-53013";
-            break;
-            default: std::cout << "SORRY_502_BAD_GATEWAY_PLEASE_TRY_AGAIN_\n";
-            break;
-        }
-    }while(choice != 6);
-    
-    return 0;
 }
 void showbalance(double balance)
 {
@@ -143,9 +151,7 @@ double withdraw(double balance)
 char help3()
 {
     char help2[10];
-    //std::string help2[344];
     std::cout << "SORRY_FOR_THE_INCONVENINCE\nPLEASE DESCRIBE YOUR ISSUE:";
-    //std::getline(std::cin,help2[344]);
     std::cin >> help2;
     std::cout << "WE UNDERSTOOD YOUR PROBLEM\n    \nOUR TEAM WILL CONTACT YOU WITHIN 24HRS\n";
     int help3[10];
